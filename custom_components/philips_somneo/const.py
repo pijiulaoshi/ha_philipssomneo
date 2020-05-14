@@ -2,13 +2,12 @@ import voluptuous as vol
 from datetime import timedelta
 
 from homeassistant.helpers import config_validation as cv
-#from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import (TEMP_CELSIUS, UNIT_PERCENTAGE)
 DOMAIN = 'philips_somneo'
 PREFIX = 'somneo_'
 DATA_SOMNEO = 'data_somneo'
 DATA_PSC = 'PSC'
-VERSION = "0.1"
+VERSION = "0.2"
 
 DEFAULT_NAME = "somneo"
 DEFAULT_HOST = "192.168.2.131"
@@ -32,15 +31,6 @@ SENSOR_TYPES = {
     "noise": ["noise", "db"]
 }
 
-# PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
-#     {
-#         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-#         vol.Required(CONF_HOST, default=DEFAULT_HOST): cv.string,
-#         vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
-#         vol.Optional(CONF_SENS, default=list(SENSOR_TYPES)): [vol.In(SENSOR_TYPES)],
-#     }
-# )
-
 CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
@@ -49,7 +39,6 @@ CONFIG_SCHEMA = vol.Schema({
         vol.Optional(CONF_SENS, default=list(SENSOR_TYPES)): [vol.In(SENSOR_TYPES)],
     })
 }, extra=vol.ALLOW_EXTRA)
-
 
 
 NOTIFICATION_ID = "somneosensor_notification"
