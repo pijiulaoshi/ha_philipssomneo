@@ -1,0 +1,8 @@
+{
+  "domain": "philips_somneo",
+  "name": "Philips Somneo SleepHacker",
+  "documentation": "",
+  "dependencies": [],
+  "codeowners": ["@pijiulaoshi"],
+  "requirements": []
+}
