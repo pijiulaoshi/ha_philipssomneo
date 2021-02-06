@@ -2,7 +2,7 @@ import voluptuous as vol
 from datetime import timedelta
 
 from homeassistant.helpers import config_validation as cv
-from homeassistant.const import (TEMP_CELSIUS, UNIT_PERCENTAGE)
+from homeassistant.const import (TEMP_CELSIUS, PERCENTAGE)
 DOMAIN = 'philips_somneo'
 PREFIX = 'somneo_'
 DATA_SOMNEO = 'data_somneo'
@@ -26,7 +26,7 @@ MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
 
 SENSOR_TYPES = {
     "temperature": ["temperature", TEMP_CELSIUS],
-    "humidity": ["humidity", UNIT_PERCENTAGE],
+    "humidity": ["humidity", PERCENTAGE],
     "light": ["light", "lux"],
     "noise": ["noise", "db"]
 }
