@@ -53,6 +53,7 @@ ATTR_C_PORT = "port"
 ATTR_C_SENS = "sensors"
 ATTR_C_SURL = "sensor_url"
 ATTR_C_LURL = "light_url"
+ATTR_C_INT = "scan_interval"
 
 ATTR_S_TEMP = "temperature"
 ATTR_S_HUM = "humidity"
