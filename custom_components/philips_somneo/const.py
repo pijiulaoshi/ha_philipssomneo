@@ -13,11 +13,13 @@ DEFAULT_NAME = "somneo"
 DEFAULT_HOST = "192.168.2.131"
 DEFAULT_PORT = 443
 DEFAULT_CTYPE = "3"
+DEFAULT_INTERVAL = timedelta(seconds=60)
 
 CONF_NAME = 'name'
 CONF_HOST = 'host'
 CONF_PORT = 'port'
 CONF_SENS = 'sensors'
+CONF_INTERVAL = 'scan_interval'
 
 CONF_CTYPE = "ctype"
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
@@ -35,6 +37,7 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Required(CONF_HOST): cv.string,
+        vol.Optional(CONF_INTERVAL): cv.int,
         vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
         vol.Optional(CONF_SENS, default=list(SENSOR_TYPES)): [vol.In(SENSOR_TYPES)],
     })
