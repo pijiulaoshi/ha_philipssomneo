@@ -21,6 +21,7 @@ def setup(hass, config):
         host = conf.get(CONF_HOST, DEFAULT_HOST)
         port_int = conf.get(CONF_PORT, DEFAULT_PORT)
         port = str(port_int)
+        sc_interval = conf.get(CONF_INTERVAL, DEFAULT_INTERVAL)
         sens_url = 'https://' + host + ':' + port + '/di/v1/products/1/wusrd'
         light_url = 'https://' + host + ':' + port + '/di/v1/products/1/wulgt'
         sens = []
