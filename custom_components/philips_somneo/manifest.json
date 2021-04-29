@@ -4,5 +4,6 @@
   "documentation": "",
   "dependencies": [],
   "codeowners": ["@pijiulaoshi"],
-  "requirements": []
+  "requirements": [],
+  "version": "1.0"
 }
