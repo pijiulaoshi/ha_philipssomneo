@@ -70,7 +70,7 @@ class SomneoData:
         self.light = None
         self.noise = None
         self.url = url
-        self._sc_int = sc_int
+        scan_int = sc_int
 
     def get_sensor_data(self):
         sensor_data_update = {'mslux': None, 'mstmp': None, 'msrhu': None, 'mssnd': None, 'avlux': None, 'avtmp': None, 'avhum': None, 'avsnd': None, 'enscr': None}
@@ -81,7 +81,7 @@ class SomneoData:
                 sensor_data_update[key] = value
         return sensor_data_update
 
-    @Throttle(self._sc_int)
+    @Throttle(scan_int)
     def update(self):
         """Get the latest data from Somneo."""
         sensor_data = self.get_sensor_data()
