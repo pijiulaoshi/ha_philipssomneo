@@ -37,7 +37,7 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Required(CONF_HOST): cv.string,
-        vol.Optional(CONF_INTERVAL): cv.positive_int,
+        vol.Optional(CONF_INTERVAL, default=DEFAULT_INTERVAL): cv.positive_int,
         vol.Optional(CONF_PORT, default=DEFAULT_PORT): cv.port,
         vol.Optional(CONF_SENS, default=list(SENSOR_TYPES)): [vol.In(SENSOR_TYPES)],
     })
