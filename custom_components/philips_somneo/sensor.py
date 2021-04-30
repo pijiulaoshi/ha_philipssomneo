@@ -19,9 +19,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Somneo sensor platform."""
     somneo_data = hass.data[DATA_PSC]
     host = somneo_data[ATTR_C_HOST]
-    port = somneo_data[ATTR_C_PORT]
+    #port = somneo_data[ATTR_C_PORT]
     sc_int = somneo_data[ATTR_C_INT]
-    sensor_url = 'https://' + host + ':' + str(port) + '/di/v1/products/1/wusrd'
+    sensor_url = 'https://' + host + '/di/v1/products/1/wusrd'
     data = SomneoData(sensor_url)
     dev = []
     for sensor in somneo_data[ATTR_C_SENS]:
