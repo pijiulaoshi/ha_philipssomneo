@@ -5,7 +5,7 @@ import requests
 import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 # Import the device class from the component that you want to support
-from homeassistant.components.light import (PLATFORM_SCHEMA, Light)
+from homeassistant.components.light import (PLATFORM_SCHEMA, LightEntity)
 
 from .const import *
 
@@ -27,7 +27,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities([SomneoLight(name, url, ctype, ltlvl)])
 
 
-class SomneoLight(Light):
+class SomneoLight(LightEntity):
     """Representation of an Somneo Light."""
 
     def __init__(self, name, url, ctype, ltlvl):
