@@ -19,9 +19,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Somneo Light platform."""
     somneo_data = hass.data[DATA_PSC]
     host = somneo_data['host']
-    port = somneo_data['port']
+    #port = somneo_data['port']
     name = somneo_data['name']
-    url = 'https://' + host + ':' + port + '/di/v1/products/1/wulgt'
+    url = 'https://' + host + '/di/v1/products/1/wulgt'
     ctype = 3
     ltlvl = 15
     add_entities([SomneoLight(name, url, ctype, ltlvl)])
