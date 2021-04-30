@@ -8,7 +8,6 @@ Config.yaml:
 philips_somneo:
   name: PhilipsSomneo
   host: <somneo_ip>
-  port: <port> optional (I think it is always the same)
   sensors:
     - temperature
     - humidity
