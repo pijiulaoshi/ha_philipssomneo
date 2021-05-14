@@ -22,6 +22,7 @@ def setup(hass, config):
         #port_int = conf.get(CONF_PORT, DEFAULT_PORT)
         #port = str(port_int)
         sc_interval = conf.get(CONF_INTERVAL, DEFAULT_INTERVAL)
+        scan_int = sc_interval.total_seconds()
         sens_url = 'https://' + host + '/di/v1/products/1/wusrd'
         light_url = 'https://' + host + '/di/v1/products/1/wulgt'
         sens = []
