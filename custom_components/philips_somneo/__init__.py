@@ -29,7 +29,7 @@ def setup(hass, config):
         for xsensor in conf.get(CONF_SENS):
             sens.append(xsensor)
         ### DATA_SETS ###
-        host_data = {ATTR_C_NAME: name, ATTR_C_HOST: host, ATTR_C_SENS: sens, ATTR_C_INT: sc_interval}
+        host_data = {ATTR_C_NAME: name, ATTR_C_HOST: host, ATTR_C_SENS: sens, ATTR_C_INT: scan_int}
         sens_data = {ATTR_S_TEMP: None, ATTR_S_HUM: None, ATTR_S_LIGHT: None, ATTR_S_NOISE: None}
         light_data = {ATTR_L_ONOFF: None, ATTR_L_LTLVL: None, ATTR_L_CTYPE: None, ATTR_L_NGTLT: None}
         data = {"component": host_data, "sensors": sens_data, "light": light_data}
