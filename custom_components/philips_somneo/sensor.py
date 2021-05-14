@@ -93,6 +93,7 @@ class SomneoData:
             self.humidity = sensor_data['msrhu']
             self.light = sensor_data['mslux']
             self.noise = sensor_data['mssnd']
+            self._updatets = time.monotonic()
         else:
             _LOGGER.debug("Skipping update due to scan interval")
 
