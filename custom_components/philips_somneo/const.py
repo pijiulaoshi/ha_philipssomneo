@@ -12,7 +12,7 @@ VERSION = "0.2"
 DEFAULT_NAME = "somneo"
 DEFAULT_HOST = "192.168.2.131"
 DEFAULT_CTYPE = "3"
-DEFAULT_INTERVAL = timedelta(seconds=60)
+DEFAULT_INTERVAL = 60
 
 CONF_NAME = 'name'
 CONF_HOST = 'host'
@@ -35,7 +35,7 @@ CONFIG_SCHEMA = vol.Schema({
     DOMAIN: vol.Schema({
         vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
         vol.Required(CONF_HOST): cv.string,
-        vol.Optional(CONF_INTERVAL, default=DEFAULT_INTERVAL): cv.positive_int,
+        vol.Optional(CONF_INTERVAL, default=DEFAULT_INTERVAL):  cv.time_period,
         vol.Optional(CONF_SENS, default=list(SENSOR_TYPES)): [vol.In(SENSOR_TYPES)],
     })
 }, extra=vol.ALLOW_EXTRA)
