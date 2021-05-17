@@ -8,6 +8,7 @@ Config.yaml:
 philips_somneo:
   name: PhilipsSomneo
   host: <somneo_ip>
+  scan_interval: <min. time between sensor updates (optional)>
   sensors:
     - temperature
     - humidity
