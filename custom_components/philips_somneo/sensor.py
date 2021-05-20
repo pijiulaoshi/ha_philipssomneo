@@ -1,5 +1,6 @@
 """Platform for sensor integration."""
 from datetime import timedelta
+import time
 import logging
 import urllib3
 import requests
@@ -19,9 +20,10 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Somneo sensor platform."""
     somneo_data = hass.data[DATA_PSC]
     host = somneo_data[ATTR_C_HOST]
-    port = somneo_data[ATTR_C_PORT]
-    sensor_url = 'https://' + host + ':' + str(port) + '/di/v1/products/1/wusrd'
-    data = SomneoData(sensor_url)
+    #port = somneo_data[ATTR_C_PORT]
+    sc_int = somneo_data[ATTR_C_INT]
+    sensor_url = 'https://' + host + '/di/v1/products/1/wusrd'
+    data = SomneoData(sensor_url, sc_int)
     dev = []
     for sensor in somneo_data[ATTR_C_SENS]:
         dev.append(SomneoSensor(data, sensor))
@@ -62,13 +64,15 @@ class SomneoSensor(Entity):
 
 class SomneoData:
     """Get the latest data and update."""
-    def __init__(self, url):
+    def __init__(self, url, scan_int):
         """Initialize the data object."""
         self.temperature = None
         self.humidity = None
         self.light = None
         self.noise = None
         self.url = url
+        self._scan_int = scan_int
+        self._updatets = time.monotonic()
 
     def get_sensor_data(self):
         sensor_data_update = {'mslux': None, 'mstmp': None, 'msrhu': None, 'mssnd': None, 'avlux': None, 'avtmp': None, 'avhum': None, 'avsnd': None, 'enscr': None}
@@ -79,14 +83,19 @@ class SomneoData:
                 sensor_data_update[key] = value
         return sensor_data_update
 
-    @Throttle(MIN_TIME_BETWEEN_UPDATES)
+#     @Throttle(DEFAULT_INTERVAL)
     def update(self):
         """Get the latest data from Somneo."""
-        sensor_data = self.get_sensor_data()
-        self.temperature = sensor_data['mstmp']
-        self.humidity = sensor_data['msrhu']
-        self.light = sensor_data['mslux']
-        self.noise = sensor_data['mssnd']
+        if (time.monotonic() - self._updatets) >= self._scan_int:
+            _LOGGER.debug("Updating")
+            sensor_data = self.get_sensor_data()
+            self.temperature = sensor_data['mstmp']
+            self.humidity = sensor_data['msrhu']
+            self.light = sensor_data['mslux']
+            self.noise = sensor_data['mssnd']
+            self._updatets = time.monotonic()
+        else:
+            _LOGGER.debug("Skipping update due to scan interval")
 
 
 
